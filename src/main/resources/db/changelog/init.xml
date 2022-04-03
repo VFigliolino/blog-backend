@@ -1,0 +1,272 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" 
+xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" 
+xmlns:pro="http://www.liquibase.org/xml/ns/pro" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext 
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd 
+            http://www.liquibase.org/xml/ns/pro 
+            http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.6.xsd 
+            http://www.liquibase.org/xml/ns/dbchangelog 
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-1">
+        <createTable tableName="article">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="title" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="subtitle" type="VARCHAR(45)"/>
+            <column name="summary" type="VARCHAR(45)"/>
+            <column name="body" type="MEDIUMTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="link_to_primary_image" type="VARCHAR(45)"/>
+            <column name="link_to_cover_image" type="VARCHAR(45)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-2">
+        <createTable tableName="profile_has_article">
+            <column name="article_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="profile_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValueNumeric="0" name="is_major_writer" type="TINYINT(3)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-3">
+        <createTable tableName="article_has_tag">
+            <column name="tag_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="article_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-4">
+        <createTable tableName="comment">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="text" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="article_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="profile_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-5">
+        <createTable tableName="image">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="link_to_image" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="article_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-6">
+        <createTable tableName="jhi_authority">
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-7">
+        <createTable tableName="jhi_user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="login" type="VARCHAR(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password_hash" type="VARCHAR(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(50)"/>
+            <column name="last_name" type="VARCHAR(50)"/>
+            <column name="email" type="VARCHAR(191)">
+                <constraints unique="true"/>
+            </column>
+            <column name="image_url" type="VARCHAR(256)"/>
+            <column name="activated" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lang_key" type="VARCHAR(10)"/>
+            <column name="activation_key" type="VARCHAR(20)"/>
+            <column name="reset_key" type="VARCHAR(20)"/>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp"/>
+            <column name="reset_date" type="timestamp"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-8">
+        <createTable tableName="jhi_user_authority">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="authority_name" type="VARCHAR(50)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-9">
+        <createTable tableName="profile">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="nickname" type="VARCHAR(45)"/>
+            <column name="name" type="VARCHAR(45)"/>
+            <column name="surname" type="VARCHAR(45)"/>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-10">
+        <createTable tableName="tag">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="text" type="VARCHAR(45)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-11">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="username" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mail" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-12">
+        <createTable tableName="vote">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="vote" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="profile_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="article_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-13">
+        <createIndex indexName="fk_account_user_idx" tableName="profile">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-14">
+        <createIndex indexName="fk_article_has_account_account1_idx" tableName="profile_has_article">
+            <column name="profile_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-15">
+        <createIndex indexName="fk_article_has_account_article1_idx" tableName="profile_has_article">
+            <column name="article_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-16">
+        <createIndex indexName="fk_authority_name" tableName="jhi_user_authority">
+            <column name="authority_name"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-17">
+        <createIndex indexName="fk_comment_account1_idx" tableName="comment">
+            <column name="profile_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-18">
+        <createIndex indexName="fk_comment_article1_idx" tableName="comment">
+            <column name="article_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-19">
+        <createIndex indexName="fk_image_article1_idx" tableName="image">
+            <column name="article_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-20">
+        <createIndex indexName="fk_tag_has_article_article1_idx" tableName="article_has_tag">
+            <column name="article_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-21">
+        <createIndex indexName="fk_tag_has_article_tag1_idx" tableName="article_has_tag">
+            <column name="tag_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-22">
+        <createIndex indexName="fk_vote_account1_idx" tableName="vote">
+            <column name="profile_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-23">
+        <createIndex indexName="fk_vote_article1_idx" tableName="vote">
+            <column name="article_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-24">
+        <addForeignKeyConstraint baseColumnNames="profile_id" baseTableName="" constraintName="fk_profile_has_article_account1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="profile" validate="true"/>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-25">
+        <addForeignKeyConstraint baseColumnNames="article_id" baseTableName="profile_has_article" constraintName="fk_profile_has_article_article1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="article" validate="true"/>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-26">
+        <addForeignKeyConstraint baseColumnNames="authority_name" baseTableName="jhi_user_authority" constraintName="fk_authority_name" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="name" referencedTableName="jhi_authority" validate="true"/>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-27">
+        <addForeignKeyConstraint baseColumnNames="article_id" baseTableName="comment" constraintName="fk_comment_article1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="article" validate="true"/>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-28">
+        <addForeignKeyConstraint baseColumnNames="profile_id" baseTableName="comment" constraintName="fk_comment_profile1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="profile" validate="true"/>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-29">
+        <addForeignKeyConstraint baseColumnNames="article_id" baseTableName="image" constraintName="fk_image_article1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="article" validate="true"/>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-30">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="profile" constraintName="fk_profile_user" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-31">
+        <addForeignKeyConstraint baseColumnNames="article_id" baseTableName="article_has_tag" constraintName="fk_tag_has_article_article1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="article" validate="true"/>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-32">
+        <addForeignKeyConstraint baseColumnNames="tag_id" baseTableName="article_has_tag" constraintName="fk_tag_has_article_tag1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="tag" validate="true"/>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-33">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="jhi_user_authority" constraintName="fk_user_id" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-34">
+        <addForeignKeyConstraint baseColumnNames="profile_id" baseTableName="vote" constraintName="fk_vote_account1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="profile" validate="true"/>
+    </changeSet>
+    <changeSet author="venanziofigliolino (generated)" id="1648900077193-35">
+        <addForeignKeyConstraint baseColumnNames="article_id" baseTableName="vote" constraintName="fk_vote_article1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="article" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
