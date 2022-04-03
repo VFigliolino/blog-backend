@@ -13,7 +13,7 @@ import javax.validation.constraints.Min;
 import lombok.Data;
 
 @Data
-@Entity(name = "comment")
+@Entity(name = "vote")
 public class Vote {
 	
 	@Id
