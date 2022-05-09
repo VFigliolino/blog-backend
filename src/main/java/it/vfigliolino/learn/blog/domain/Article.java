@@ -11,7 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 
 @Data
 @Entity(name = "article")
