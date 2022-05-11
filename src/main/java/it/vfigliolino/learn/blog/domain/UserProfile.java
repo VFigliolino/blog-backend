@@ -1,23 +1,13 @@
 package it.vfigliolino.learn.blog.domain;
 
-import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-
 import lombok.Data;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity(name = "profile")
-public class Profile {
+public class UserProfile {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -29,5 +29,5 @@ public class User {
 	private String password;
 
 	@OneToMany(mappedBy = "user")
-	private Set<Profile> profiles;
+	private Set<UserProfile> userProfiles;
 }

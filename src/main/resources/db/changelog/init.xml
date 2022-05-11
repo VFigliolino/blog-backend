@@ -57,7 +57,7 @@
         </createTable>
     </changeSet>
     <changeSet author="venanziofigliolino (generated)" id="1649009223714-5">
-        <createTable tableName="profile">
+        <createTable tableName="userProfile">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
@@ -121,7 +121,7 @@
         </createTable>
     </changeSet>
     <changeSet author="venanziofigliolino (generated)" id="1649009223714-10">
-        <createIndex indexName="fk_account_user_idx" tableName="profile">
+        <createIndex indexName="fk_account_user_idx" tableName="userProfile">
             <column name="user_id"/>
         </createIndex>
     </changeSet>
@@ -171,33 +171,33 @@
         </createIndex>
     </changeSet>
     <changeSet author="venanziofigliolino (generated)" id="1649009223714-20">
-        <addForeignKeyConstraint baseColumnNames="article_id" baseTableName="comment" constraintName="fk_comment_article1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="article" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="article_id" baseTableName="comment" constraintName="fk_comment_article1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="article"/>
     </changeSet>
     <changeSet author="venanziofigliolino (generated)" id="1649009223714-21">
-        <addForeignKeyConstraint baseColumnNames="profile_id" baseTableName="comment" constraintName="fk_comment_profile1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="profile" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="profile_id" baseTableName="comment" constraintName="fk_comment_profile1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="userProfile"/>
     </changeSet>
     <changeSet author="venanziofigliolino (generated)" id="1649009223714-22">
-        <addForeignKeyConstraint baseColumnNames="article_id" baseTableName="image" constraintName="fk_image_article1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="article" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="article_id" baseTableName="image" constraintName="fk_image_article1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="article"/>
     </changeSet>
     <changeSet author="venanziofigliolino (generated)" id="1649009223714-23">
-        <addForeignKeyConstraint baseColumnNames="profile_id" baseTableName="profile_has_article" constraintName="fk_profile_has_article_account1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="profile" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="profile_id" baseTableName="profile_has_article" constraintName="fk_profile_has_article_account1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="userProfile"/>
     </changeSet>
     <changeSet author="venanziofigliolino (generated)" id="1649009223714-24">
-        <addForeignKeyConstraint baseColumnNames="article_id" baseTableName="profile_has_article" constraintName="fk_profile_has_article_article1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="article" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="article_id" baseTableName="profile_has_article" constraintName="fk_profile_has_article_article1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="article"/>
     </changeSet>
     <changeSet author="venanziofigliolino (generated)" id="1649009223714-25">
-        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="profile" constraintName="fk_profile_user" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="userProfile" constraintName="fk_profile_user" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="user"/>
     </changeSet>
     <changeSet author="venanziofigliolino (generated)" id="1649009223714-26">
-        <addForeignKeyConstraint baseColumnNames="article_id" baseTableName="article_has_tag" constraintName="fk_tag_has_article_article1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="article" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="article_id" baseTableName="article_has_tag" constraintName="fk_tag_has_article_article1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="article"/>
     </changeSet>
     <changeSet author="venanziofigliolino (generated)" id="1649009223714-27">
-        <addForeignKeyConstraint baseColumnNames="tag_id" baseTableName="article_has_tag" constraintName="fk_tag_has_article_tag1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="tag" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="tag_id" baseTableName="article_has_tag" constraintName="fk_tag_has_article_tag1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="tag"/>
     </changeSet>
     <changeSet author="venanziofigliolino (generated)" id="1649009223714-28">
-        <addForeignKeyConstraint baseColumnNames="profile_id" baseTableName="vote" constraintName="fk_vote_account1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="profile" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="profile_id" baseTableName="vote" constraintName="fk_vote_account1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="userProfile"/>
     </changeSet>
     <changeSet author="venanziofigliolino (generated)" id="1649009223714-29">
-        <addForeignKeyConstraint baseColumnNames="article_id" baseTableName="vote" constraintName="fk_vote_article1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="article" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="article_id" baseTableName="vote" constraintName="fk_vote_article1" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="article"/>
     </changeSet>
 </databaseChangeLog>

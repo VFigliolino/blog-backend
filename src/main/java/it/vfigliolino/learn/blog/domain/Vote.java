@@ -31,7 +31,7 @@ public class Vote {
 	
 	@ManyToOne
 	@JoinColumn(name = "profile_id")
-	private Profile profile;
+	private UserProfile userProfile;
 
 }
 

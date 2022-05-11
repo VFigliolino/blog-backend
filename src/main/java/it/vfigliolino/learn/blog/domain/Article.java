@@ -1,6 +1,5 @@
 package it.vfigliolino.learn.blog.domain;
 
-import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -11,9 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 
 @Data
 @Entity(name = "article")
@@ -48,7 +45,7 @@ public class Article {
     private Set<Image> images;
     
     @ManyToMany(mappedBy = "articlesWritten")
-    private Set<Profile> profiles;
+    private Set<UserProfile> userProfiles;
     
     @ManyToMany(mappedBy = "articlesTagged")
     private Set<Tag> tags;

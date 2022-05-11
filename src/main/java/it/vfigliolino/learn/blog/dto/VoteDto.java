@@ -4,19 +4,19 @@ import io.swagger.annotations.ApiModel;
 import it.vfigliolino.learn.blog.domain.Article;
 import it.vfigliolino.learn.blog.domain.UserProfile;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
 
 @ApiModel()
-public class CommentDto extends AbstractDto<Long> {
+public class VoteDto extends AbstractDto<Long> {
     private Long id;
-    @Size(max = 255)
-    @NotBlank
-    private String text;
+    @Max(Integer.MAX_VALUE)
+    @NotNull
+    private Integer vote;
     private Article article;
     private UserProfile userProfile;
 
-    public CommentDto() {
+    public VoteDto() {
     }
 
     public void setId(Long id) {
@@ -27,12 +27,12 @@ public class CommentDto extends AbstractDto<Long> {
         return this.id;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setVote(Integer vote) {
+        this.vote = vote;
     }
 
-    public String getText() {
-        return this.text;
+    public Integer getVote() {
+        return this.vote;
     }
 
     public void setArticle(Article article) {

@@ -27,7 +27,7 @@ public class Comment {
 	
 	@ManyToOne
 	@JoinColumn(name = "profile_id")
-	private Profile profile;
+	private UserProfile userProfile;
 	
 	
 	
